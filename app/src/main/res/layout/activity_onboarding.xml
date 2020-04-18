@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffcc00"
+    android:background="@color/colorShade"
     tools:context=".Onboarding">
 
     <com.google.android.material.button.MaterialButton
@@ -15,15 +15,17 @@
         android:layout_marginBottom="15dp"
         android:textSize="15sp"
         app:cornerRadius="20dp"
+        app:strokeColor="@color/colorPrimaryDark"
         android:textColor="@color/colorTextPrimary"
         android:textStyle="normal"
-        android:fontFamily="@font/roboto_light"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/onboardingViewpager"
         android:layout_height="match_parent"
+
         android:layout_width="match_parent"/>
 
     <LinearLayout

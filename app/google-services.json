@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "722405534240",
+    "firebase_url": "https://recipekhazana-5600c.firebaseio.com",
+    "project_id": "recipekhazana-5600c",
+    "storage_bucket": "recipekhazana-5600c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722405534240:android:92720d86bfea119a332a45",
+        "android_client_info": {
+          "package_name": "com.test.recipekhazana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722405534240-fq0a04pebo3qnhod49f97r185urdesr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsl1oppfZ2boOdHOurQ4zUQDlOBWmB5uM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722405534240-fq0a04pebo3qnhod49f97r185urdesr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

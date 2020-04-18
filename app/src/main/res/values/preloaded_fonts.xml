@@ -2,6 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/annie_use_your_telescope</item>
+        <item>@font/archivo_narrow</item>
+        <item>@font/arvo</item>
         <item>@font/bangers</item>
         <item>@font/roboto_light</item>
     </array>

@@ -22,20 +22,20 @@
         android:id="@+id/textTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/arvo"
         android:gravity="center"
         android:textColor="@color/colorTextPrimary"
         android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/annie_use_your_telescope"
+        android:fontFamily="@font/roboto_light"
         android:gravity="center"
         android:textColor="@color/colorBackground"
-        android:textSize="18sp"
+        android:textSize="13sp"
 
         android:textStyle="bold" />
 
