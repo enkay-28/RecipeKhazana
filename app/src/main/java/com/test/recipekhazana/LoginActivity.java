@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                 phoneNumber = numberInput.getText().toString();
                 if(phoneNumber.length()==10){
                     Intent intent = new Intent(getApplicationContext(),VerifyActivity.class);
+                    intent.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
                     intent.putExtra(EXTRA_PHONE,phoneNumber);
                     startActivity(intent);
                 }else{

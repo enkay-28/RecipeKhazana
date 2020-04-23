@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="170dp"
+    android:layout_height="130dp"
+    app:cardCornerRadius="20dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="20dp"
+
+    android:paddingTop="5dp"
+    app:cardElevation="2dp"
+
+    app:cardBackgroundColor="@color/colorShade"
+
+    app:layout_constraintVertical_bias="0.027">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/food_image"
+            android:layout_width="257dp"
+            android:layout_height="200dp"
+            android:tint="#43000000"
+            app:layout_constraintBottom_toBottomOf="@+id/recipe_card_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.406"
+            app:srcCompat="@drawable/food" />
+
+        <TextView
+            android:id="@+id/recipe_card_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arvo"
+            android:gravity="center"
+            android:text="Title"
+            android:textColor="@color/colorBackground"
+            android:textSize="14sp"
+
+
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.854" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

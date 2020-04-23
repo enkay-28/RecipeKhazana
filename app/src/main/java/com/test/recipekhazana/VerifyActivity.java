@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class VerifyActivity extends AppCompatActivity {
     PinView pinView;
     ProgressBar progress;
     String otpSent;
+    ImageView backButton;
     String otp ;
 
     @Override
@@ -43,16 +45,27 @@ public class VerifyActivity extends AppCompatActivity {
         message = findViewById(R.id.enterOtpText);
         message.setText(message.getText() + "+91-" + phoneNumber);
         progress = findViewById(R.id.progressBar2);
+        backButton = findViewById(R.id.backButtonView);
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         sendOtpToUser(phoneNumber);
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(otp==null){
-                    otp = pinView.getText().toString();
-
+                    if(pinView.getText().length()!=6){
+                        pinView.setError("Enter Pin");
+                    }else {
+                        otp = pinView.getText().toString();
+                        verifyOtp(otp);
+                    }
                 }
-                verifyOtp(otp);
+
             }
         });
 
@@ -79,8 +92,8 @@ public class VerifyActivity extends AppCompatActivity {
             otp = phoneAuthCredential.getSmsCode();
             if(otp!=null){
                 pinView.setText(otp);
-                progress.setVisibility(View.VISIBLE);
-
+                progress.setVisibility(View.INVISIBLE);
+                verifyOtp(otp);
             }
         }
 
@@ -104,8 +117,11 @@ public class VerifyActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    i.putExtra("names",getIntent().getStringArrayExtra("names"));
+                    i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+                    i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
+                    startActivity(i);
                     finish();
 
                 }else{

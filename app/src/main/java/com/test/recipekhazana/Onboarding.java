@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,14 @@ public class Onboarding extends AppCompatActivity {
     private OnboardAdapter adapter;
     private LinearLayout layoutOnboardingInterface;
     private MaterialButton buttonOnboardingAction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkFirstOpen();
         setContentView(R.layout.activity_onboarding);
+
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -52,7 +57,22 @@ public class Onboarding extends AppCompatActivity {
                 if(viewPager2.getCurrentItem() + 1 < adapter.getItemCount()){
                     viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1);
                 }else{
-                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                    if(FirebaseAuth.getInstance().getCurrentUser()==null) {
+                        Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+                        i.putExtra("names",getIntent().getStringArrayExtra("names"));
+                        i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+                        i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
+                        startActivity(i);
+                    }
+                    else{
+                        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                        i.putExtra("names",getIntent().getStringArrayExtra("names"));
+                        i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+                        i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
+                        startActivity(i);
+                    }
+
+
                     finish();
                 }
             }
@@ -129,5 +149,33 @@ public class Onboarding extends AppCompatActivity {
             buttonOnboardingAction.setText("Start");
         else
             buttonOnboardingAction.setText("Next");
+    }
+
+    private void checkFirstOpen(){
+        Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
+        if (!isFirstRun) {
+
+            if(FirebaseAuth.getInstance().getCurrentUser()==null) {
+                Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+                i.putExtra("names",getIntent().getStringArrayExtra("names"));
+                i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+                i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
+                startActivity(i);
+            }
+            else {
+                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                i.putExtra("names",getIntent().getStringArrayExtra("names"));
+                i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+                i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
+                startActivity(i);
+            }
+            finish();
+
+        }
+
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun",
+                false).apply();
     }
 }

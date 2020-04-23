@@ -8,4 +8,5 @@
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorShade">#ffcc00</color>
     <color name="colorOnboardingIndicatorInactive">#F8F0A1</color>
+    <color name="colorUnchecked">#4E4A4A</color>
 </resources>
