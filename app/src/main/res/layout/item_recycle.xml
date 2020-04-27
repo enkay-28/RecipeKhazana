@@ -6,12 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="170dp"
-    android:layout_height="130dp"
+    android:layout_width="160dp"
+    android:layout_height="120dp"
     app:cardCornerRadius="20dp"
     android:layout_marginTop="6dp"
     android:layout_marginBottom="20dp"
-    android:layout_marginLeft="3dp"
+
     android:paddingTop="5dp"
     app:cardElevation="2dp"
 
@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/food_image"
-            android:layout_width="221dp"
-            android:layout_height="174dp"
+            android:layout_width="211dp"
+            android:layout_height="164dp"
             android:scaleType="centerCrop"
             android:tint="#43000000"
             app:layout_constraintBottom_toBottomOf="@+id/recipe_card_title"
