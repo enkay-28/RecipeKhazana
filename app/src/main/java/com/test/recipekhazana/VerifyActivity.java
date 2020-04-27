@@ -104,9 +104,12 @@ public class VerifyActivity extends AppCompatActivity {
     };
 
     private void verifyOtp(String otp){
-
+        try{
         PhoneAuthCredential phoneAuthCredential =  PhoneAuthProvider.getCredential(otpSent,otp);
-        signInUser(phoneAuthCredential);
+        signInUser(phoneAuthCredential);}
+        catch(Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void signInUser(PhoneAuthCredential credential){
@@ -118,11 +121,9 @@ public class VerifyActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
 
                     Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    i.putExtra("names",getIntent().getStringArrayExtra("names"));
-                    i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
                     i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
                     startActivity(i);
-                    finish();
+                    finishAffinity();
 
                 }else{
 

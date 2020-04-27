@@ -1,6 +1,7 @@
 package com.test.recipekhazana;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +14,19 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class ViewPagerAdapter extends PagerAdapter {
     String[] titles;
     String[] images;
     Context context;
 
+
     public ViewPagerAdapter(String[] titles, String[] images, Context context) {
         this.titles = titles;
         this.images = images;
         this.context = context;
+
     }
 
     @Override
@@ -38,7 +43,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         Picasso.get().load(images[position]).into(imageView);
         textView.setText(titles[position]);
         container.addView(v);
-
+        
         return v;
     }
 

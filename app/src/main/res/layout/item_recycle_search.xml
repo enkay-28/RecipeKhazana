@@ -6,12 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="170dp"
-    android:layout_height="130dp"
+    android:layout_width="150dp"
+    android:layout_height="110dp"
     app:cardCornerRadius="20dp"
     android:layout_marginTop="6dp"
+    android:layout_marginLeft="10dp"
     android:layout_marginBottom="20dp"
-    android:layout_marginLeft="3dp"
+
     android:paddingTop="5dp"
     app:cardElevation="2dp"
 
@@ -25,21 +26,20 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/food_image"
-            android:layout_width="221dp"
-            android:layout_height="174dp"
+            android:id="@+id/ing_image"
+            android:layout_width="194dp"
+            android:layout_height="134dp"
             android:scaleType="centerCrop"
             android:tint="#43000000"
-            app:layout_constraintBottom_toBottomOf="@+id/recipe_card_title"
+            app:layout_constraintBottom_toBottomOf="@+id/ing_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.406"
+            app:layout_constraintVertical_bias="0.3"
             app:srcCompat="@drawable/food" />
 
         <TextView
-            android:id="@+id/recipe_card_title"
+            android:id="@+id/ing_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/arvo"

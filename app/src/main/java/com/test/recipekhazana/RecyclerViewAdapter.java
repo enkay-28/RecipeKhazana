@@ -5,6 +5,8 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +21,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private List<String> titleRecipe;
     private List<String> images;
     private Context context;
-    OnRecyclerViewClickListener onRecyclerViewClickListener;
+    private OnRecyclerViewClickListener onRecyclerViewClickListener;
     public RecyclerViewAdapter(Context context, List<String> title, List<String> images, OnRecyclerViewClickListener onRecyclerViewClickListener){
         this.titleRecipe = title;
         this.images = images;
@@ -43,6 +45,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return titleRecipe.size();
     }
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
         ImageView foodImage;

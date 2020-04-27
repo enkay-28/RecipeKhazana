@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
     ArrayList<Recipe> allRecipes;
     TextView appName, tagLine;
     FirebaseFirestore firestoreDatabase;
-    String[] dishNames, imagesUrl;
+    //String[] dishNames, imagesUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,8 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         firestoreDatabase = FirebaseFirestore.getInstance();
         allRecipes = new ArrayList<Recipe>();
-        dishNames = new String[50];
-        imagesUrl = new String[50];
+      //  dishNames = new String[50];
+        //imagesUrl = new String[50];
        // requestQueue = Volley.newRequestQueue(this);
 
         getfromDataBase();
@@ -90,14 +90,16 @@ public class SplashScreen extends AppCompatActivity {
 
                             Recipe obj = d.toObject(Recipe.class);
                             allRecipes.add(obj);
-                            dishNames[i] = (obj.getName());
-                            imagesUrl[i] = (obj.getImgURL());
+
                             i++;
 
                         }
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         Intent intent = new Intent(getApplicationContext(),Onboarding.class);
-                        intent.putExtra("names",dishNames);
-                        intent.putExtra("pics",imagesUrl);
                         intent.putParcelableArrayListExtra("data",allRecipes);
 
                         startActivity(intent);

@@ -59,21 +59,23 @@ public class Onboarding extends AppCompatActivity {
                 }else{
                     if(FirebaseAuth.getInstance().getCurrentUser()==null) {
                         Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-                        i.putExtra("names",getIntent().getStringArrayExtra("names"));
-                        i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+
                         i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
                         startActivity(i);
+                        finish();
+
                     }
                     else{
                         Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                        i.putExtra("names",getIntent().getStringArrayExtra("names"));
-                        i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
+
                         i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
                         startActivity(i);
+                        finish();
+
                     }
 
 
-                    finish();
+
                 }
             }
         });
@@ -159,19 +161,18 @@ public class Onboarding extends AppCompatActivity {
 
             if(FirebaseAuth.getInstance().getCurrentUser()==null) {
                 Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-                i.putExtra("names",getIntent().getStringArrayExtra("names"));
-                i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
                 i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
                 startActivity(i);
+                finish();
+
             }
             else {
                 Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                i.putExtra("names",getIntent().getStringArrayExtra("names"));
-                i.putExtra("pics",getIntent().getStringArrayExtra("pics"));
                 i.putExtra("data",getIntent().getParcelableArrayListExtra("data"));
                 startActivity(i);
+                finish();
             }
-            finish();
+
 
         }
 

@@ -5,6 +5,40 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="ingredient_names">
+        <item>Paneer</item>
+        <item>Fruits</item>
+        <item>Strawberries</item>
+        <item>Vegetables</item>
+        <item>Onion</item>
+        <item>Potato</item>
+        <item>Tomato</item>
+        <item>Salmon</item>
+        <item>Steak</item>
+        <item>Bacon</item>
+        <item>Egg</item>
+        <item>Cheese</item>
+        <item>Cookie</item>
+        <item>Vinegar</item>
+
+
+    </string-array>
+    <string-array name="ingredient_imgs">
+        <item>https://twosleevers.com/wp-content/uploads/2017/06/Instant-Pot-Paneer-01.jpg</item>
+        <item>https://www.thespruce.com/thmb/j48nD8nuhjYVPraWhPuqmTnXRdA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-465096387-5c911b9dc9e77c0001ac192d.jpg</item>
+        <item>https://cdn.theatlantic.com/thumbor/DRVz-EzT3OSNjOHzf_8AaUarqOQ=/5x378:3499x2199/960x500/media/img/mt/2019/08/RTR4FJJS/original.jpg</item>
+        <item>https://cdn1.sph.harvard.edu/wp-content/uploads/sites/21/2018/07/fruitveg.jpeg</item>
+        <item>https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/276/276714/red-and-white-onions.jpg</item>
+        <item>https://www.isaaa.org/kc/cropbiotechupdate/files/images/1232019105233PM.jpg</item>
+        <item>https://www.naturefresh.ca/wp-content/uploads/NFF-health-benefits-of-Tomatoes.jpg</item>
+        <item>https://static01.nyt.com/images/2016/04/13/dining/13PAIRING/13PAIRING-articleLarge.jpg</item>
+        <item>https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2Farchive%2Fe3ce4eb1741bd76cc083424453c0e3f39d147f9b</item>
+        <item>https://i.ytimg.com/vi/yjDpBnPuCnM/maxresdefault.jpg</item>
+        <item>https://hips.hearstapps.com/del.h-cdn.co/assets/18/08/1519321899-hard-boiled-eggs-horizontal.jpg</item>
+        <item>https://i.ytimg.com/vi/RLhmG-LIwnE/maxresdefault.jpg</item>
+        <item>https://www.biggerbolderbaking.com/wp-content/uploads/2017/07/1C5A8967.jpg</item>
+        <item>https://shelleycase.com/wp-content/uploads/2019/01/malt-vigegar.jpg</item>
+
+
+    </string-array>
 </resources>

@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -41,6 +45,11 @@ public class RecipeFragment extends Fragment implements RecyclerViewAdapter.OnRe
     private ArrayList<Integer> servings ;
     private ArrayList<List<String>> ingredients;
     private ArrayList<String> directions;
+
+    public RecipeFragment(ArrayList<Recipe> dataList) {
+        this.dataList = dataList;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,7 +63,7 @@ public class RecipeFragment extends Fragment implements RecyclerViewAdapter.OnRe
         ingredients = new ArrayList<>();
         directions = new ArrayList<>();
 
-        dataList = getActivity().getIntent().getParcelableArrayListExtra("data");
+        //dataList = getActivity().getIntent().getParcelableArrayListExtra("data");
         for( Recipe obj : dataList){
             dishNames.add(obj.getName());
             imagesUrl.add(obj.getImgURL());
@@ -73,14 +82,19 @@ public class RecipeFragment extends Fragment implements RecyclerViewAdapter.OnRe
         viewPager = v.findViewById(R.id.view_pager_recipes);
 
 
-        viewPagerTitles = new String[]{"Hottest Recipe!", "Recipe of the Week!", "Quick Hunger Crunch", "Most Popular"};
+        viewPagerTitles = new String[]{"Hottest Recipes!", "Choose yourself!", "Quick Hunger Crunch", "All Ingredients"};
         viewPagerImages = new String[4];
+
+        String a= SimpleDateFormat.getDateInstance().format(new Date());
+        String date = a.substring(0,2);
+        int i = Integer.valueOf(date) / 2;
         int k = 0;
-        for(int i=13;i<17;i++){
+        while(k < 4){
             viewPagerImages[k] = imagesUrl.get(i);
+            i++;
             k++;
         }
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(viewPagerTitles,viewPagerImages,getContext());
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(viewPagerTitles,viewPagerImages, getContext());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setPadding(130,0,130,0);
         //iewPagerListener(viewPager);
@@ -103,11 +117,11 @@ public class RecipeFragment extends Fragment implements RecyclerViewAdapter.OnRe
         intent.putExtra("calorie",calories.get(position));
         intent.putExtra("serving",servings.get(position));
 
-        String ingredient = "";
+        StringBuilder ingredient = new StringBuilder();
         for(String l : ingredients.get(position)){
-            ingredient = ingredient + "• " + l + "\n";
+            ingredient.append("• ").append(l).append("\n");
         }
-        intent.putExtra("ingredient",ingredient);
+        intent.putExtra("ingredient", ingredient.toString());
         intent.putExtra("directions",directions.get(position));
         startActivity(intent);
     }

@@ -3,6 +3,7 @@ package com.test.recipekhazana;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -32,21 +33,37 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    ArrayList<Recipe> allData;
     FrameLayout frameLayout;
     Fragment fragment;
     //private final String url = "https://raw.githubusercontent.com/coolboyhs10/test/master/db-recipes.json";
     //JsonArrayRequest request;
     //private FirebaseAuth firebaseAuth;
+    Fragment fragment1 ;
+    Fragment fragment2 ;
+
+    FragmentManager fragmentManager;
+    Fragment activeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        allData = getIntent().getParcelableArrayListExtra("data");
         //firestoreDatabase = FirebaseFirestore.getInstance();
        // requestQueue = Volley.newRequestQueue(this);
         //jsonParse();
-        bottomNavigationView = findViewById(R.id.nav_bar);
+        fragmentManager = getSupportFragmentManager();
         frameLayout = findViewById(R.id.frame_layout);
+        fragment1 = new RecipeFragment(allData);
+        fragment2 = new SearchFragment();
+        activeFragment = fragment1;
+
+        fragmentManager.beginTransaction().add(R.id.frame_layout, fragment2, "2").hide(fragment2).commit();
+        fragmentManager.beginTransaction().add(R.id.frame_layout, fragment1, "1").commit();
+
+        bottomNavigationView = findViewById(R.id.nav_bar);
+
 
 
 
@@ -56,23 +73,26 @@ public class MainActivity extends AppCompatActivity {
                 switch(item.getItemId()) {
 
                     case R.id.all_recipe_item:
-                        fragment = new RecipeFragment();
-                        getSupportFragmentManager().beginTransaction().
-                                replace(R.id.frame_layout,fragment).commit();
-                        return true;
-
+                        fragmentManager.beginTransaction().hide(activeFragment).show(fragment1).commit();
+                        activeFragment = fragment1;
+                        break;
 
                     case R.id.search_recipe_item:
-                        return true;
+                        fragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit();
+                        activeFragment = fragment2;
+                        break;
+
 
 
 
                     case R.id.profile_item:
-                        return true;
 
-                    default: return false;
+
+
 
                 }
+
+                return true;
 
             }
         });
@@ -81,60 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-/*
-    private void jsonParse(){
-        request = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    JSONObject jsonObject = null;
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                jsonObject = response.getJSONObject(i);
-                                String name = jsonObject.getString("name");
-                                String instructions = jsonObject.getString("instructions");
-                                int calories = jsonObject.getInt("calories");
-                                int servings = jsonObject.getInt("servings");
-                                JSONArray ingredients = jsonObject.getJSONArray("ingredients");
-                                List<String> ingredientsR = new ArrayList<>();
-                                for(int j = 0; j < ingredients.length(); j++)
-                                    ingredientsR.add(ingredients.getString(j));
 
-                                JSONArray tags = jsonObject.getJSONArray("tags");
-                                List<String> tagsR = new ArrayList<>();
-                                for(int j = 0; j < tags.length(); j++)
-                                    tagsR.add(tags.getString(j));
 
-                                Recipe r = new Recipe(name, instructions, calories,servings, ingredientsR, tagsR);
-                                firestoreDatabase.collection("recipe")
-                                        .add(r)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(getApplicationContext(),"COULD NOT ADD",Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
 
-                                //Toast.makeText(getApplicationContext(),jsonObject.getString("name"),Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(request);
-    }*/
 }
