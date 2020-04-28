@@ -13,6 +13,11 @@
         android:title="Recipes"
          />
     <item
+        android:id="@+id/spin_item"
+        android:icon="@drawable/roulette"
+        android:title="Spin It"
+        />
+    <item
         android:id="@+id/profile_item"
         android:icon="@drawable/profile"
         android:title="Profile"

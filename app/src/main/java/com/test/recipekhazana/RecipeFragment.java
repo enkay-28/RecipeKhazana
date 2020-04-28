@@ -84,10 +84,10 @@ public class RecipeFragment extends Fragment implements RecyclerViewAdapter.OnRe
 
         viewPagerTitles = new String[]{"Hottest Recipes!", "Choose yourself!", "Quick Hunger Crunch", "All Ingredients"};
         viewPagerImages = new String[4];
-
+        /*
         String a= SimpleDateFormat.getDateInstance().format(new Date());
-        String date = a.substring(0,2);
-        int i = Integer.valueOf(date) / 2;
+        String date = a.substring(0,2);*/
+        int i = 13;
         int k = 0;
         while(k < 4){
             viewPagerImages[k] = imagesUrl.get(i);
@@ -97,10 +97,10 @@ public class RecipeFragment extends Fragment implements RecyclerViewAdapter.OnRe
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(viewPagerTitles,viewPagerImages, getContext());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setPadding(130,0,130,0);
-        //iewPagerListener(viewPager);
+        //viewPagerListener(viewPager);
 
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),dishNames,imagesUrl,this);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),dishNames ,imagesUrl ,this);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2,RecyclerView.VERTICAL,false));
         recyclerView.setAdapter(adapter);
 

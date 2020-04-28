@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     //private FirebaseAuth firebaseAuth;
     Fragment fragment1 ;
     Fragment fragment2 ;
+    Fragment fragment3;
+    Fragment fragment4;
 
     FragmentManager fragmentManager;
     Fragment activeFragment;
@@ -57,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.frame_layout);
         fragment1 = new RecipeFragment(allData);
         fragment2 = new SearchFragment();
+        fragment3 = new SpinFragment();
+        fragment4 = new ProfileFragment();
         activeFragment = fragment1;
-
+        fragmentManager.beginTransaction().add(R.id.frame_layout, fragment4, "4").hide(fragment4).commit();
+        fragmentManager.beginTransaction().add(R.id.frame_layout, fragment3, "3").hide(fragment3).commit();
         fragmentManager.beginTransaction().add(R.id.frame_layout, fragment2, "2").hide(fragment2).commit();
         fragmentManager.beginTransaction().add(R.id.frame_layout, fragment1, "1").commit();
 
@@ -85,9 +90,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+                    case R.id.spin_item:
+                        fragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit();
+                        activeFragment = fragment3;
+                        break;
+
+
                     case R.id.profile_item:
-
-
+                        fragmentManager.beginTransaction().hide(activeFragment).show(fragment4).commit();
+                        activeFragment = fragment4;
+                        break;
 
 
                 }

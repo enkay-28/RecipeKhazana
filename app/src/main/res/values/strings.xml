@@ -5,24 +5,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string-array name="ingredient_names">
-        <item>Paneer</item>
-        <item>Fruits</item>
-        <item>Strawberries</item>
-        <item>Vegetables</item>
-        <item>Onion</item>
-        <item>Potato</item>
-        <item>Tomato</item>
-        <item>Salmon</item>
-        <item>Steak</item>
-        <item>Bacon</item>
-        <item>Egg</item>
-        <item>Cheese</item>
-        <item>Cookie</item>
-        <item>Vinegar</item>
-
-
-    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="ingredient_imgs">
         <item>https://twosleevers.com/wp-content/uploads/2017/06/Instant-Pot-Paneer-01.jpg</item>
         <item>https://www.thespruce.com/thmb/j48nD8nuhjYVPraWhPuqmTnXRdA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-465096387-5c911b9dc9e77c0001ac192d.jpg</item>
@@ -38,6 +21,26 @@
         <item>https://i.ytimg.com/vi/RLhmG-LIwnE/maxresdefault.jpg</item>
         <item>https://www.biggerbolderbaking.com/wp-content/uploads/2017/07/1C5A8967.jpg</item>
         <item>https://shelleycase.com/wp-content/uploads/2019/01/malt-vigegar.jpg</item>
+
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="ingredient_names">
+        <item>Paneer</item>
+        <item>Fruits</item>
+        <item>Strawberries</item>
+        <item>Vegetables</item>
+        <item>Onion</item>
+        <item>Potato</item>
+        <item>Tomato</item>
+        <item>Salmon</item>
+        <item>Steak</item>
+        <item>Bacon</item>
+        <item>Egg</item>
+        <item>Cheese</item>
+        <item>Cookie</item>
+        <item>Vinegar</item>
 
 
     </string-array>
